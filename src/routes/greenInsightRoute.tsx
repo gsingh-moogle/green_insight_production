@@ -1,24 +1,11 @@
-// import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import ProtectedRoute, { ProtectedRouteCheck } from "../auth/ProtectedRoute";
 import PrivateRoute from "../auth/PrivateRoute";
-
-import { LoginForm } from "../pages/login";
+import LoginView from "../pages/login/LoginView";
 import ErrorPage from "../pages/error";
 import Dashboard from "../pages/dashboard"
 
-export default function GreenInsightRoute() {
-    // const dispatch = useDispatch();
-    // let tokenDetails1 = JSON.parse(localStorage.getItem("loginDetails"))?.token
-    // useEffect(() => {
-    //     if (tokenDetails1) {
-    //         dispatch(getFiltersDate());
-    //         dispatch(userDetailsApi());
-
-    //     }
-    // }, [dispatch, tokenDetails1]);
-
+const GreenInsightRoute = () => {
 
     return (
         <Router basename="/">
@@ -27,7 +14,7 @@ export default function GreenInsightRoute() {
                     path="/"
                     element={
                         <ProtectedRouteCheck>
-                            <LoginForm />
+                            <LoginView />
                         </ProtectedRouteCheck>
                     }
                 />
@@ -41,16 +28,13 @@ export default function GreenInsightRoute() {
                     }
                 />
 
-
                 <Route element={<ProtectedRoute />}>
                     <Route path="/" element={<PrivateRoute roles={[2]} />}>
                         <Route path="/bucket-list" element={<Dashboard />} />
                     </Route>
 
-
-
                     <Route path="/" element={<PrivateRoute roles={[0, 1]} />}>
-                        <Route path="/sustainable" element={<Dashboard />} />
+                        <Route path="/" element={<Dashboard />} />
                     </Route>
                 </Route>
                 <Route path="*" element={<ErrorPage />} />
@@ -60,3 +44,5 @@ export default function GreenInsightRoute() {
         </Router>
     );
 }
+
+export default GreenInsightRoute

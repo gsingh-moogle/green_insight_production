@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from 'react-toastify';
 import { setLoading } from "../home/homeSlice"
-// import { userDetailsApi } from "../auth/graph/graphDetailsSlice"
 
 import authService from "./authService";
 const initialState = {
@@ -25,7 +24,6 @@ export const loginPost = createAsyncThunk("post/login", async (userData: any, th
         const res = await authService.authLoginPost(userData);
         if (res) {
             thunkApi.dispatch(getFiltersDate())
-            // thunkApi.dispatch(userDetailsApi())
         }
         return res
     }
@@ -69,7 +67,6 @@ export const otpPost = createAsyncThunk("post/otp", async (useData: any, thunkAp
         const res = await authService.authPostOtp(useData);
         if (res) {
             thunkApi.dispatch(getFiltersDate())
-            // thunkApi.dispatch(userDetailsApi())
         }
         return res
     }
@@ -184,8 +181,6 @@ export const authDataReducer = createSlice({
                 state.isLoading = false;
                 state.headerName = action.payload || null;
             })
-
-
 
     }
 })

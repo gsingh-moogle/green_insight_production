@@ -4,10 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './scss/index.scss';
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import store from './store'
 import { Provider } from 'react-redux';
 import Interceptor from "./utils/interceptors";
@@ -17,6 +15,7 @@ Interceptor(store);
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <>
     <ToastContainer position="top-right"
